@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic AI Resume Builder</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-serif min-h-screen">
+    <div class="max-w-4xl mx-auto p-6">
+        
+        <header class="text-center py-10 border-b border-gray-700 mb-8">
+            <h1 class="text-5xl font-bold text-amber-500 mb-3 tracking-wide">ResumAI</h1>
+            <p class="text-gray-400 text-lg">Craft Your Career Story <span class="text-amber-600 text-sm ml-2">★ Powered by LLaMA 3.3 - 70B</span></p>
+        </header>
+
+        <main class="bg-gray-800 p-8 rounded-lg shadow-2xl border border-gray-700">
+            <form id="ai-form" class="space-y-6">
+                <div>
+                    <label class="block text-amber-500 font-bold mb-2 text-lg">Select Document Type</label>
+                    <select id="doc_type" class="w-full bg-gray-900 text-gray-200 border border-gray-600 rounded p-4 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition">
+                        <option value="resume">Classic Professional Resume</option>
+                        <option value="cover_letter">Persuasive Cover Letter</option>
+                        <option value="linkedin">LinkedIn Profile Summary</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-amber-500 font-bold mb-2 text-lg">Your Details & Experience</label>
+                    <textarea id="details" rows="6" class="w-full bg-gray-900 text-gray-200 border border-gray-600 rounded p-4 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition !leading-normal align-top" placeholder="Example: I am an Electrical Engineer with experience in Digital Logic Design and a passion for AI projects..."></textarea>
+                </div>
+
+                <button type="submit" id="submit-btn" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-4 rounded shadow-lg transition duration-300 text-lg">
+                    Generate Resume
+                </button>
+            </form>
+
+            <div id="loading" class="hidden text-center mt-10">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-amber-500 mb-2"></div>
+                <p class="text-amber-500 font-medium animate-pulse">Groq AI is crafting your document... Please wait.</p>
+            </div>
+
+            <div id="result-box" class="hidden mt-10">
+                <div class="flex justify-between items-end border-b border-gray-700 pb-4 mb-4">
+                    <h2 class="text-2xl font-bold text-amber-500">Your Output:</h2>
+                    <div class="flex gap-3">
+                        <button id="copy-btn" class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition border border-gray-600 flex items-center gap-2">
+                            📋 Copy Text
+                        </button>
+                        <button id="pdf-btn" class="bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded transition shadow flex items-center gap-2">
+                            📄 Download PDF
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="ai-output" class="bg-gray-900 p-8 rounded border border-gray-700 text-gray-300 prose prose-invert prose-amber max-w-none !leading-normal">
+                    </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
